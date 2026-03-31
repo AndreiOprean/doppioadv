@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Doppio Adventures</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -26,9 +24,10 @@
       align-items:center;
       justify-content:center;
     }
+
     .modal img { max-width:90%; max-height:90%; }
 
-    .review-card { background: linear-gradient(135deg,#facc15,#f97316); color:black; }
+    .review-card { background: linear-gradient(135deg,#facc15,#f97316); }
   </style>
 </head>
 
@@ -41,13 +40,12 @@
     <div class="hidden md:flex gap-6">
       <a href="#galerie">Galerie</a>
       <a href="#despre">Despre</a>
-      <a href="#testimoniale">Recenzii</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
 
-<!-- HERO VIDEO -->
+<!-- HERO -->
 <header class="relative h-[75vh] mt-16">
   <video id="heroVideo" autoplay muted loop playsinline class="absolute w-full h-full object-cover">
     <source src="video.mp4" type="video/mp4">
@@ -56,7 +54,6 @@
 
   <div class="relative flex flex-col items-center justify-center h-full text-white text-center">
     <h2 class="text-4xl md:text-6xl font-extrabold">Aventură în Munții Apuseni</h2>
-    <p class="mt-4 text-lg">Adrenalină, natură și experiențe de neuitat</p>
     <a href="#contact" class="mt-6 bg-yellow-400 px-6 py-3 rounded-xl font-bold">Rezervă acum</a>
   </div>
 </header>
@@ -66,9 +63,10 @@
   <h2 class="text-3xl font-bold text-center mb-10">Galerie</h2>
 
   <div class="relative max-w-5xl mx-auto h-[500px] overflow-hidden rounded-2xl">
-    <img src="activ1.png" class="slide active" onclick="openModal(0)">
-    <img src="activ2.png" class="slide" onclick="openModal(1)">
-    <img src="activ3.png" class="slide" onclick="openModal(2)">
+    <img src="poster.png" class="slide active" onclick="openModal(0)">
+    <img src="activ1.png" class="slide active" onclick="openModal(1)">
+    <img src="activ2.png" class="slide" onclick="openModal(2)">
+    <img src="activ3.png" class="slide" onclick="openModal(3)">
 
     <button onclick="prevSlide()" class="absolute left-4 top-1/2 bg-black/50 text-white px-4 py-2">❮</button>
     <button onclick="nextSlide()" class="absolute right-4 top-1/2 bg-black/50 text-white px-4 py-2">❯</button>
@@ -76,47 +74,16 @@
 </section>
 
 <!-- MODAL -->
-<div id="modal" class="modal flex items-center justify-center">
+<div id="modal" class="modal">
   <img id="modalImg">
 </div>
 
 <!-- DESPRE -->
-<section id="despre" class="py-16 bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-center px-6">
+<section id="despre" class="py-16 bg-gradient-to-r from-yellow-400 to-orange-500 text-center px-6">
   <h2 class="text-3xl font-bold mb-4">Despre noi</h2>
   <p class="max-w-3xl mx-auto text-lg">
-    Doppio Adventures îți oferă experiențe off-road de neuitat în inima Munților Apuseni.
-    Fie că vrei o plimbare relaxantă sau o aventură plină de adrenalină, avem trasee perfecte pentru tine.
+    Doppio Adventures oferă experiențe off-road memorabile în Munții Apuseni. ATV-uri moderne, trasee spectaculoase și ghidaj profesionist.
   </p>
-  <p class="max-w-3xl mx-auto mt-4">
-    Lucrăm cu ATV-uri moderne, sigure și oferim ghidaj profesionist pentru ca tu să te bucuri de natură fără griji.
-  </p>
-</section>
-
-<!-- TESTIMONIALE -->
-<section id="testimoniale" class="py-16 px-6">
-  <h2 class="text-3xl font-bold text-center mb-10">Recenzii</h2>
-
-  <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-    <div class="review-card p-6 rounded-xl">
-      <p>"O experiență absolut fantastică! Traseele sunt superbe și organizarea impecabilă."</p>
-      <h4 class="mt-3 font-bold">– Ana</h4>
-    </div>
-
-    <div class="review-card p-6 rounded-xl">
-      <p>"Foarte profi! ATV-urile sunt noi și foarte ușor de condus."</p>
-      <h4 class="mt-3 font-bold">– Marius</h4>
-    </div>
-
-    <div class="review-card p-6 rounded-xl">
-      <p>"Distracție maximă! Peisaje incredibile și multă adrenalină."</p>
-      <h4 class="mt-3 font-bold">– Viorel</h4>
-    </div>
-
-    <div class="review-card p-6 rounded-xl">
-      <p>"Recomand din suflet! Perfect pentru un weekend diferit."</p>
-      <h4 class="mt-3 font-bold">– Andreea</h4>
-    </div>
-  </div>
 </section>
 
 <!-- CONTACT -->
@@ -126,49 +93,60 @@
   <form action="https://formspree.io/f/your-form-id" method="POST" class="max-w-5xl mx-auto grid md:grid-cols-2 gap-4">
     <input name="name" placeholder="Nume" class="p-4 rounded">
     <input name="email" placeholder="Email" class="p-4 rounded">
-    <textarea name="message" class="md:col-span-2 p-4 rounded"></textarea>
+    <textarea name="message" placeholder="Detalii rezervare" class="md:col-span-2 p-4 rounded"></textarea>
     <button class="md:col-span-2 bg-black text-white p-4">Trimite</button>
   </form>
-
-  <a href="https://wa.me/40700000000" class="block mt-6 text-center bg-green-500 text-white p-4 rounded-xl">
-    Rezervă pe WhatsApp
-  </a>
 </section>
+
+<!-- MAP -->
+<section class="py-12 px-4 bg-white">
+  <h2 class="text-3xl font-bold text-center mb-6">Locație</h2>
+  <iframe src="https://www.google.com/maps?q=Galda%20de%20Jos&output=embed" class="w-full h-[400px] rounded-2xl"></iframe>
+</section>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/40700000000" class="fixed bottom-6 right-6 bg-green-500 text-white px-5 py-4 rounded-full shadow-lg">
+  WhatsApp
+</a>
 
 <script>
 const slides=document.querySelectorAll('.slide');
 let current=0;
 
 function showSlide(i){slides[current].classList.remove('active');current=(i+slides.length)%slides.length;slides[current].classList.add('active');}
-function nextSlide(){showSlide(current+1);} function prevSlide(){showSlide(current-1);}
-setInterval(nextSlide,5000);
+function nextSlide(){showSlide(current+1);} function prevSlide(){showSlide(current-1);} setInterval(nextSlide,5000);
 
-// swipe
-let startX=0;
-document.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
-document.addEventListener('touchend',e=>{
- let endX=e.changedTouches[0].clientX;
- if(startX-endX>50) nextSlide();
- if(endX-startX>50) prevSlide();
-});
-
-// modal
+// modal fix
+const modal=document.getElementById('modal');
+const modalImg=document.getElementById('modalImg');
 const images=["activ1.png","activ2.png","activ3.png"];
 let modalIndex=0;
-function openModal(i){modalIndex=i;document.getElementById('modal').style.display='flex';document.getElementById('modalImg').src=images[i];}
-function closeModal(){document.getElementById('modal').style.display='none';}
-document.getElementById('modal').onclick=closeModal;
 
-document.addEventListener('keydown',e=>{
- if(e.key==='ArrowRight'){modalIndex=(modalIndex+1)%images.length;document.getElementById('modalImg').src=images[modalIndex];}
- if(e.key==='ArrowLeft'){modalIndex=(modalIndex-1+images.length)%images.length;document.getElementById('modalImg').src=images[modalIndex];}
+function openModal(i){
+  modalIndex=i;
+  modal.style.display='flex';
+  modalImg.src=images[i];
+}
+
+function closeModal(){ modal.style.display='none'; }
+modal.addEventListener('click', closeModal);
+
+// arrows
+window.addEventListener('keydown',e=>{
+ if(modal.style.display==='flex'){
+  if(e.key==='ArrowRight'){modalIndex=(modalIndex+1)%images.length;modalImg.src=images[modalIndex];}
+  if(e.key==='ArrowLeft'){modalIndex=(modalIndex-1+images.length)%images.length;modalImg.src=images[modalIndex];}
+ }
 });
 
-// auto pause video
+// video pause
 const video=document.getElementById('heroVideo');
 document.addEventListener('visibilitychange',()=>{
  if(document.hidden){video.pause();} else{video.play();}
 });
+
+// ensure modal hidden on load
+window.onload=()=>{ modal.style.display='none'; };
 </script>
 
 </body>

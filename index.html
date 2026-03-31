@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doppio Adventures</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-black text-white p-6 text-center">
+    <h1 class="text-3xl font-bold">Doppio Adventures</h1>
+    <p class="mt-2">ATV Rentals & Outdoor Experiences</p>
+  </header>
+
+  <!-- Gallery -->
+  <section class="p-8">
+    <h2 class="text-2xl font-semibold mb-4">Gallery</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <img src="image1.jpg" class="rounded-2xl shadow">
+      <img src="image2.jpg" class="rounded-2xl shadow">
+      <img src="image3.jpg" class="rounded-2xl shadow">
+      <img src="image4.jpg" class="rounded-2xl shadow">
+      <img src="image5.jpg" class="rounded-2xl shadow">
+    </div>
+
+    <div class="mt-6">
+      <video controls class="w-full rounded-2xl shadow">
+        <source src="video.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="bg-white p-8">
+    <h2 class="text-2xl font-semibold mb-4">About Us</h2>
+    <p>Experience the thrill of off-road adventures with Doppio Adventures. We offer high-quality ATV rentals for unforgettable outdoor journeys.</p>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="p-8">
+    <h2 class="text-2xl font-semibold mb-4">Book Your Ride</h2>
+
+    <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-4 max-w-xl">
+      <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded-xl border">
+      <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded-xl border">
+      <input type="date" name="date" required class="w-full p-3 rounded-xl border">
+      <textarea name="message" placeholder="Details (number of people, duration...)" class="w-full p-3 rounded-xl border"></textarea>
+      <button type="submit" class="bg-black text-white px-6 py-3 rounded-xl">Send Reservation</button>
+    </form>
+
+    <p class="mt-4 text-sm text-gray-500">* Replace the Formspree link with your own to receive emails.</p>
+  </section>
+
+  <!-- Map -->
+  <section class="p-8 bg-white">
+    <h2 class="text-2xl font-semibold mb-4">Find Us</h2>
+    <iframe
+      src="https://www.google.com/maps?q=Alba%20Iulia&output=embed"
+      class="w-full h-96 rounded-2xl shadow"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white text-center p-4 mt-8">
+    <p>&copy; 2026 Doppio Adventures. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -174,21 +174,54 @@ window.onload=()=>{
  document.getElementById('modal').style.display='none';
 }
 
+// slider
 const slides=document.querySelectorAll('.slide');
 let current=0;
 function showSlide(i){slides[current].classList.remove('active');current=(i+slides.length)%slides.length;slides[current].classList.add('active');}
-function nextSlide(){showSlide(current+1);} function prevSlide(){showSlide(current-1);} setInterval(nextSlide,5000);
+function nextSlide(){showSlide(current+1);} 
+function prevSlide(){showSlide(current-1);} 
+setInterval(nextSlide,5000);
 
+// modal (FIXED)
 const modal=document.getElementById('modal');
 const modalImg=document.getElementById('modalImg');
 const images=["poster.png","activ1.png","activ2.png","activ3.png"];
+let modalIndex=0;
 
 function openModal(i){
- modal.style.display='flex';
- modalImg.src=images[i];
+  modalIndex=i;
+  modal.style.display='flex';
+  modalImg.src=images[modalIndex];
 }
 
-modal.onclick=()=>modal.style.display='none';
+function nextModal(){
+  modalIndex=(modalIndex+1)%images.length;
+  modalImg.src=images[modalIndex];
+}
+
+function prevModal(){
+  modalIndex=(modalIndex-1+images.length)%images.length;
+  modalImg.src=images[modalIndex];
+}
+
+// click navigation (left/right side)
+modal.addEventListener('click', (e)=>{
+  const width=window.innerWidth;
+  if(e.clientX < width/2){
+    prevModal();
+  } else {
+    nextModal();
+  }
+});
+
+// keyboard navigation
+window.addEventListener('keydown', (e)=>{
+  if(modal.style.display==='flex'){
+    if(e.key==='ArrowRight') nextModal();
+    if(e.key==='ArrowLeft') prevModal();
+    if(e.key==='Escape') modal.style.display='none';
+  }
+});
 </script>
 
 </body>

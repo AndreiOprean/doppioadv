@@ -3,50 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Doppio Adventures</title>
 
+  <!-- SEO -->
+  <title>Doppio Adventures | Închirieri ATV Alba Iulia</title>
+  <meta name="description" content="Închirieri ATV în Alba Iulia. Trasee off-road, experiențe cu ghid și aventură în Munții Apuseni.">
+  <meta name="keywords" content="ATV Alba Iulia, inchiriere ATV, offroad Apuseni">
+
+  <!-- Favicon -->
+  <link rel="icon" href="logo.png">
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Poppins', sans-serif; }
 
-    .slide { position:absolute; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 0.8s ease; }
+    /* Loader */
+    #loader { position:fixed; inset:0; background:black; display:flex; align-items:center; justify-content:center; z-index:2000; }
+
+    .slide { position:absolute; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 0.8s ease; cursor:pointer; }
     .slide.active { opacity:1; }
 
-    .modal {
-      display:none;
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.95);
-      z-index:1000;
-      align-items:center;
-      justify-content:center;
-    }
+    .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:1000; align-items:center; justify-content:center; }
+    .modal img { max-width:90%; max-height:90%; transition: transform 0.3s; }
+    .modal img:hover { transform: scale(1.05); }
 
-    .modal img { max-width:90%; max-height:90%; }
+    .review-card { background: linear-gradient(135deg,#facc15,#f97316); transition: transform 0.3s; }
+    .review-card:hover { transform: translateY(-5px); }
 
-    .review-card { background: linear-gradient(135deg,#facc15,#f97316); }
+    .hover-zoom:hover { transform: scale(1.05); transition:0.3s; }
   </style>
 </head>
 
 <body class="bg-gray-50">
 
+<!-- LOADER -->
+<div id="loader">
+  <div class="text-white text-xl">Loading...</div>
+</div>
+
 <!-- NAVBAR -->
 <nav class="fixed top-0 w-full z-50 bg-black/70 text-white">
   <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-    <h1 class="font-bold text-xl">Doppio Adventures</h1>
-    <div class="hidden md:flex gap-6">
+    <div class="flex items-center gap-3">
+      <img src="logo.png" class="h-10">
+      <h1 class="font-bold text-xl">Doppio Adventures</h1>
+    </div>
+
+    <div class="hidden md:flex gap-6 items-center">
       <a href="#galerie">Galerie</a>
       <a href="#despre">Despre</a>
       <a href="#contact">Contact</a>
+
+      <!-- Language toggle -->
+      <button onclick="toggleLang()" class="bg-yellow-400 text-black px-3 py-1 rounded">EN</button>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<header class="relative h-[75vh] mt-16">
+<header class="relative h-[75vh] mt-16" data-aos="fade-in">
   <video id="heroVideo" autoplay muted loop playsinline class="absolute w-full h-full object-cover">
     <source src="video.mp4" type="video/mp4">
   </video>
@@ -54,17 +78,17 @@
 
   <div class="relative flex flex-col items-center justify-center h-full text-white text-center">
     <h2 class="text-4xl md:text-6xl font-extrabold">Aventură în Munții Apuseni</h2>
-    <a href="#contact" class="mt-6 bg-yellow-400 px-6 py-3 rounded-xl font-bold">Rezervă acum</a>
+    <a href="#contact" class="mt-6 bg-yellow-400 px-6 py-3 rounded-xl font-bold hover:scale-105 transition">Rezervă acum</a>
   </div>
 </header>
 
 <!-- GALERIE -->
-<section id="galerie" class="py-16">
+<section id="galerie" class="py-16" data-aos="fade-up">
   <h2 class="text-3xl font-bold text-center mb-10">Galerie</h2>
 
   <div class="relative max-w-5xl mx-auto h-[500px] overflow-hidden rounded-2xl">
     <img src="poster.png" class="slide active" onclick="openModal(0)">
-    <img src="activ1.png" class="slide active" onclick="openModal(1)">
+    <img src="activ1.png" class="slide" onclick="openModal(1)">
     <img src="activ2.png" class="slide" onclick="openModal(2)">
     <img src="activ3.png" class="slide" onclick="openModal(3)">
 
@@ -79,101 +103,80 @@
 </div>
 
 <!-- DESPRE -->
-<section id="despre" class="py-16 bg-gradient-to-r from-yellow-400 to-orange-500 text-center px-6">
+<section id="despre" class="py-16 bg-gradient-to-r from-yellow-400 to-orange-500 text-center px-6" data-aos="fade-up">
   <h2 class="text-3xl font-bold mb-4">Despre noi</h2>
   <p class="max-w-3xl mx-auto text-lg">
-    Doppio Adventures oferă experiențe off-road memorabile în Munții Apuseni. ATV-uri moderne, trasee spectaculoase și ghidaj profesionist.
+    Experiențe ATV autentice în natură. Aventură, siguranță și distracție.
   </p>
 </section>
 
-  <!-- TESTIMONIALE -->
-<section id="testimoniale" class="py-16 px-6">
+<!-- TESTIMONIALE -->
+<section class="py-16 px-6" data-aos="fade-up">
   <h2 class="text-3xl font-bold text-center mb-10">Recenzii</h2>
-
   <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-    <div class="review-card p-6 rounded-xl">
-      <p>"O experiență absolut fantastică! Traseele sunt superbe și organizarea impecabilă."</p>
-      <h4 class="mt-3 font-bold">– Ana</h4>
-    </div>
-
-    <div class="review-card p-6 rounded-xl">
-      <p>"Foarte profi! ATV-urile sunt noi și foarte ușor de condus."</p>
-      <h4 class="mt-3 font-bold">– Marius</h4>
-    </div>
-
-    <div class="review-card p-6 rounded-xl">
-      <p>"Distracție maximă! Peisaje incredibile și multă adrenalină."</p>
-      <h4 class="mt-3 font-bold">– Viorel</h4>
-    </div>
-
-    <div class="review-card p-6 rounded-xl">
-      <p>"Recomand din suflet! Perfect pentru un weekend diferit."</p>
-      <h4 class="mt-3 font-bold">– Andreea</h4>
-    </div>
+    <div class="review-card p-6 rounded-xl">Ana</div>
+    <div class="review-card p-6 rounded-xl">Marius</div>
+    <div class="review-card p-6 rounded-xl">Viorel</div>
+    <div class="review-card p-6 rounded-xl">Andreea</div>
   </div>
 </section>
-  
+
 <!-- CONTACT -->
-<section id="contact" class="py-12 bg-yellow-400 px-4">
+<section id="contact" class="py-12 bg-yellow-400 px-4" data-aos="fade-up">
   <h2 class="text-3xl font-bold text-center mb-6">Rezervă</h2>
 
   <form action="https://formspree.io/f/your-form-id" method="POST" class="max-w-5xl mx-auto grid md:grid-cols-2 gap-4">
     <input name="name" placeholder="Nume" class="p-4 rounded">
     <input name="email" placeholder="Email" class="p-4 rounded">
     <textarea name="message" placeholder="Detalii rezervare" class="md:col-span-2 p-4 rounded"></textarea>
-    <button class="md:col-span-2 bg-black text-white p-4">Trimite</button>
+    <button class="md:col-span-2 bg-black text-white p-4 hover:bg-gray-800">Trimite</button>
   </form>
 </section>
 
 <!-- MAP -->
-<section class="py-12 px-4 bg-white">
+<section class="py-12 px-4 bg-white" data-aos="fade-up">
   <h2 class="text-3xl font-bold text-center mb-6">Locație</h2>
   <iframe src="https://www.google.com/maps?q=Galda%20de%20Jos&output=embed" class="w-full h-[400px] rounded-2xl"></iframe>
 </section>
 
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/40700000000" class="fixed bottom-6 right-6 bg-green-500 text-white px-5 py-4 rounded-full shadow-lg">
-  WhatsApp
+<!-- FOOTER -->
+<footer class="bg-black text-white text-center p-6">
+  <div class="flex justify-center gap-6 mb-4">
+    <a href="https://www.instagram.com/doppioadventures" target="_blank">Instagram</a>
+    <a href="https://www.tiktok.com/@doppioadventures" target="_blank">TikTok</a>
+  </div>
+  <p>&copy; 2026 Doppio Adventures</p>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/40771436982" class="fixed bottom-6 right-6 bg-green-500 p-4 rounded-full shadow-lg hover:scale-110 transition">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="h-8">
 </a>
 
 <script>
+AOS.init();
+
+// loader
+window.onload=()=>{
+ document.getElementById('loader').style.display='none';
+ document.getElementById('modal').style.display='none';
+}
+
+// slider
 const slides=document.querySelectorAll('.slide');
 let current=0;
-
 function showSlide(i){slides[current].classList.remove('active');current=(i+slides.length)%slides.length;slides[current].classList.add('active');}
 function nextSlide(){showSlide(current+1);} function prevSlide(){showSlide(current-1);} setInterval(nextSlide,5000);
 
-// modal fix
+// modal
 const modal=document.getElementById('modal');
 const modalImg=document.getElementById('modalImg');
-const images=["activ1.png","activ2.png","activ3.png"];
-let modalIndex=0;
+const images=["poster.png","activ1.png","activ2.png","activ3.png"];
+function openModal(i){modal.style.display='flex';modalImg.src=images[i];}
+modal.onclick=()=>modal.style.display='none';
 
-function openModal(i){
-  modalIndex=i;
-  modal.style.display='flex';
-  modalImg.src=images[i];
-}
-
-function closeModal(){ modal.style.display='none'; }
-modal.addEventListener('click', closeModal);
-
-// arrows
-window.addEventListener('keydown',e=>{
- if(modal.style.display==='flex'){
-  if(e.key==='ArrowRight'){modalIndex=(modalIndex+1)%images.length;modalImg.src=images[modalIndex];}
-  if(e.key==='ArrowLeft'){modalIndex=(modalIndex-1+images.length)%images.length;modalImg.src=images[modalIndex];}
- }
-});
-
-// video pause
-const video=document.getElementById('heroVideo');
-document.addEventListener('visibilitychange',()=>{
- if(document.hidden){video.pause();} else{video.play();}
-});
-
-// ensure modal hidden on load
-window.onload=()=>{ modal.style.display='none'; };
+// lang toggle
+function toggleLang(){ alert('You can implement full translation later'); }
 </script>
 
 </body>
